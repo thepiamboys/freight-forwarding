@@ -18,8 +18,9 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_js = "/assets/freight_forwarding/js/freight_forwarding.js"
+# app_include_js = "/assets/freight_forwarding/js/freight_forwarding.js"
 # app_include_css = "/assets/freight_forwarding/css/freight_forwarding.css"
+# Note: app_include_js commented out - using doctype_js for client scripts instead
 
 # include js, css files in header of web template
 # web_include_css = "/assets/freight_forwarding/css/freight_forwarding.css"
