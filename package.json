@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Enterprise-grade Freight Forwarding add-on for ERPNext v15",
   "private": true,
-  "scripts": {}
+  "scripts": {},
+  "dependencies": {}
 }
 
