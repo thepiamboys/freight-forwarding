@@ -6,4 +6,6 @@ recursive-include freight_forwarding *.json *.md *.yaml *.yml
 recursive-include freight_forwarding/doctype */*.json */*.py
 recursive-include freight_forwarding/report */*.json */*.py
 recursive-include freight_forwarding/fixtures *.json *.yaml *.yml
+recursive-include freight_forwarding/public *.*
+recursive-include freight_forwarding/project/client_scripts *.js
 
