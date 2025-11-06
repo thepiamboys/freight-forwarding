@@ -18,8 +18,10 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_js = "/assets/freight_forwarding/js/freight_forwarding.js"
+# app_include_js = "/assets/freight_forwarding/js/freight_forwarding.js"
 # app_include_css = "/assets/freight_forwarding/css/freight_forwarding.css"
+# Note: Removed app_include_js to avoid esbuild path resolution issues
+# Client scripts are loaded via doctype_js which works correctly
 
 # include js, css files in header of web template
 # web_include_css = "/assets/freight_forwarding/css/freight_forwarding.css"
