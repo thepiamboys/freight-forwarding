@@ -38,15 +38,15 @@ app_license = "MIT"
 
 # include js in doctype views
 doctype_js = {
-    "Project": "freight_forwarding/project/client_scripts/project.js",
-    "Sales Invoice": "freight_forwarding/project/client_scripts/sales_invoice.js",
-    "Purchase Invoice": "freight_forwarding/project/client_scripts/purchase_invoice.js",
-    "Purchase Order": "freight_forwarding/project/client_scripts/purchase_order.js",
-    "Employee Advance": "freight_forwarding/project/client_scripts/employee_advance.js",
-    "Expense Claim": "freight_forwarding/project/client_scripts/expense_claim.js",
-    "Payment Entry": "freight_forwarding/project/client_scripts/payment_entry.js",
-    "Quotation": "freight_forwarding/project/client_scripts/quotation.js",
-    "FF Consol Shipment": "freight_forwarding/project/client_scripts/ff_consol_shipment.js",
+    "Project": "project/client_scripts/project.js",
+    "Sales Invoice": "project/client_scripts/sales_invoice.js",
+    "Purchase Invoice": "project/client_scripts/purchase_invoice.js",
+    "Purchase Order": "project/client_scripts/purchase_order.js",
+    "Employee Advance": "project/client_scripts/employee_advance.js",
+    "Expense Claim": "project/client_scripts/expense_claim.js",
+    "Payment Entry": "project/client_scripts/payment_entry.js",
+    "Quotation": "project/client_scripts/quotation.js",
+    "FF Consol Shipment": "project/client_scripts/ff_consol_shipment.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
