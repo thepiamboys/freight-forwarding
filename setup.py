@@ -21,6 +21,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "frappe>=15.0.0,<16.0.0",
+        "gunicorn @ git+https://github.com/frappe/gunicorn@bb554053bb87218120d76ab6676af7015680e8b6",
     ],
 )
 
