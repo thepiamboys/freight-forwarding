@@ -1,0 +1,58 @@
+[
+  {
+    "doctype": "Expense Claim Type",
+    "name": "Port Handling",
+    "expense_type": "Port Handling",
+    "accounts": [
+      {
+        "company": "",
+        "default_account": "Port Service Cost - FF"
+      }
+    ]
+  },
+  {
+    "doctype": "Expense Claim Type",
+    "name": "Customs Brokerage",
+    "expense_type": "Customs Brokerage",
+    "accounts": [
+      {
+        "company": "",
+        "default_account": "Customs Service Cost - FF"
+      }
+    ]
+  },
+  {
+    "doctype": "Expense Claim Type",
+    "name": "Trucking OPEX",
+    "expense_type": "Trucking OPEX",
+    "accounts": [
+      {
+        "company": "",
+        "default_account": "Trucking Cost - FF"
+      }
+    ]
+  },
+  {
+    "doctype": "Expense Claim Type",
+    "name": "Warehouse/Storage",
+    "expense_type": "Warehouse/Storage",
+    "accounts": [
+      {
+        "company": "",
+        "default_account": "Warehouse Service Cost - FF"
+      }
+    ]
+  },
+  {
+    "doctype": "Expense Claim Type",
+    "name": "Surcharges Ops",
+    "expense_type": "Surcharges Ops",
+    "accounts": [
+      {
+        "company": "",
+        "default_account": "Surcharges Cost - FF"
+      }
+    ]
+  }
+]
+

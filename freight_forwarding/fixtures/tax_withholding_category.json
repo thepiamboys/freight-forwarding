@@ -1,0 +1,15 @@
+[
+  {
+    "doctype": "Tax Withholding Category",
+    "name": "PPh 23",
+    "category_name": "PPh 23",
+    "rate": 2,
+    "accounts": [
+      {
+        "account": "PPh 23 Dipotong - FF",
+        "account_type": "Payable"
+      }
+    ]
+  }
+]
+

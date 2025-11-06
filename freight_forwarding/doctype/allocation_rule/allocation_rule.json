@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-06 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "charge_code",
+  "item",
+  "method",
+  "manual_percentage",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "charge_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Charge Code"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "method",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Allocation Method",
+   "options": "by_cbm\nby_weight\nby_chargeable\nequal\nby_slot\nmanual_pct",
+   "reqd": 1
+  },
+  {
+   "fieldname": "manual_percentage",
+   "fieldtype": "Percent",
+   "label": "Manual Percentage",
+   "depends_on": "eval:doc.method == 'manual_pct'"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_child_table": 1,
+ "links": [],
+ "modified": "2025-11-06 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Freight Forwarding",
+ "name": "Allocation Rule",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
+

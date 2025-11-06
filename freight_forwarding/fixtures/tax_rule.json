@@ -1,0 +1,23 @@
+[
+  {
+    "doctype": "Tax Rule",
+    "name": "PPN JPT 1,1% - Freight Services",
+    "title": "PPN JPT 1,1% untuk Freight Services",
+    "tax_type": "Sales",
+    "use_for_shopping_cart": 0,
+    "sales_taxes_and_charges_template": "PPN JPT 1,1%",
+    "purchase_taxes_and_charges_template": "",
+    "customer": "",
+    "supplier": "",
+    "item": "",
+    "item_group": "Freight Services",
+    "billing_city": "",
+    "billing_state": "",
+    "billing_country": "",
+    "shipping_city": "",
+    "shipping_state": "",
+    "shipping_country": "",
+    "priority": 1
+  }
+]
+

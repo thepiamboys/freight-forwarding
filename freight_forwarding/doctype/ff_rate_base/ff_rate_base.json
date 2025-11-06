@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-06 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "rate_lane",
+  "container_type",
+  "equipment",
+  "weight_break_from",
+  "weight_break_to",
+  "column_break_1",
+  "base_rate",
+  "currency",
+  "uom",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "rate_lane",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Rate Lane",
+   "options": "FF Rate Lane"
+  },
+  {
+   "fieldname": "container_type",
+   "fieldtype": "Data",
+   "label": "Container Type",
+   "description": "e.g., 20GP, 40GP, 40HQ"
+  },
+  {
+   "fieldname": "equipment",
+   "fieldtype": "Data",
+   "label": "Equipment"
+  },
+  {
+   "fieldname": "weight_break_from",
+   "fieldtype": "Float",
+   "label": "Weight Break From (kg)"
+  },
+  {
+   "fieldname": "weight_break_to",
+   "fieldtype": "Float",
+   "label": "Weight Break To (kg)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "base_rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Base Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "description": "Unit of Measure (per container, per kg, etc.)"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_child_table": 1,
+ "links": [],
+ "modified": "2025-11-06 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Freight Forwarding",
+ "name": "FF Rate Base",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
+

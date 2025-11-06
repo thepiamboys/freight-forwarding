@@ -1,0 +1,214 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-06 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "division",
+  "mode",
+  "section_break_1",
+  "mbl_or_mawb_no",
+  "carrier_or_airline",
+  "vessel_or_flight",
+  "column_break_1",
+  "pol",
+  "pod",
+  "aoo",
+  "aod",
+  "section_break_2",
+  "etd",
+  "eta",
+  "section_break_3",
+  "consol_members",
+  "section_break_4",
+  "allocation_rules",
+  "section_break_5",
+  "status",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "division",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Division",
+   "options": "Export\nImport\nDomestic\nProject",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mode",
+   "fieldtype": "MultiSelect",
+   "label": "Mode",
+   "options": "Sea\nAir\nLand",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Shipment Details"
+  },
+  {
+   "fieldname": "mbl_or_mawb_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "MBL/MAWB No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "carrier_or_airline",
+   "fieldtype": "Data",
+   "label": "Carrier/Airline"
+  },
+  {
+   "fieldname": "vessel_or_flight",
+   "fieldtype": "Data",
+   "label": "Vessel/Flight"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pol",
+   "fieldtype": "Link",
+   "label": "POL (Port of Loading)",
+   "options": "FF Port"
+  },
+  {
+   "fieldname": "pod",
+   "fieldtype": "Link",
+   "label": "POD (Port of Discharge)",
+   "options": "FF Port"
+  },
+  {
+   "fieldname": "aoo",
+   "fieldtype": "Link",
+   "label": "AOO (Airport of Origin)",
+   "options": "FF Airport"
+  },
+  {
+   "fieldname": "aod",
+   "fieldtype": "Link",
+   "label": "AOD (Airport of Destination)",
+   "options": "FF Airport"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "etd",
+   "fieldtype": "Date",
+   "label": "ETD (Estimated Time of Departure)"
+  },
+  {
+   "fieldname": "eta",
+   "fieldtype": "Date",
+   "label": "ETA (Estimated Time of Arrival)"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break",
+   "label": "Consol Members"
+  },
+  {
+   "fieldname": "consol_members",
+   "fieldtype": "Table",
+   "label": "Consol Members",
+   "options": "Consol Member",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break",
+   "label": "Allocation Rules"
+  },
+  {
+   "fieldname": "allocation_rules",
+   "fieldtype": "Table",
+   "label": "Allocation Rules",
+   "options": "Allocation Rule"
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break",
+   "label": "Status & Notes"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nIn Transit\nDelivered\nCancelled",
+   "default": "Draft"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-06 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Freight Forwarding",
+ "name": "FF Consol Shipment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-OPS",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-DOCS",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-MANAGER",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-ADMIN",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
+

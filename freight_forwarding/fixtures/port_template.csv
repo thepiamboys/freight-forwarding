@@ -1,0 +1,12 @@
+port_code,port_name,country,city,port_type,lat,lon,timezone,has_customs,free_time_default_demurrage,free_time_default_detention
+IDJKT,Jakarta Port,Indonesia,Jakarta,Sea,-6.1214,106.8381,Asia/Jakarta,1,7,7
+IDSUB,Surabaya Port,Indonesia,Surabaya,Sea,-7.2575,112.7521,Asia/Jakarta,1,7,7
+IDMED,Medan Port,Indonesia,Medan,Sea,3.5952,98.6722,Asia/Jakarta,1,7,7
+SGSIN,Singapore Port,Singapore,Singapore,Sea,1.2897,103.8501,Asia/Singapore,1,5,5
+MYPNG,Port Klang,Malaysia,Port Klang,Sea,3.0000,101.4000,Asia/Kuala_Lumpur,1,5,5
+THBKK,Bangkok Port,Thailand,Bangkok,Sea,13.7563,100.5018,Asia/Bangkok,1,7,7
+CNPVG,Shanghai Port,China,Shanghai,Sea,31.2304,121.4737,Asia/Shanghai,1,7,7
+HKHKG,Hong Kong Port,Hong Kong,Hong Kong,Sea,22.3193,114.1694,Asia/Hong_Kong,1,5,5
+JPTYO,Tokyo Port,Japan,Tokyo,Sea,35.6762,139.6503,Asia/Tokyo,1,7,7
+KRINC,Incheon Port,South Korea,Incheon,Sea,37.4563,126.7052,Asia/Seoul,1,7,7
+

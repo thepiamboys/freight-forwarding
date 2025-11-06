@@ -1,0 +1,163 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-06 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "lane_type",
+  "pol",
+  "pod",
+  "aoo",
+  "aod",
+  "origin",
+  "destination",
+  "column_break_1",
+  "service",
+  "equipment",
+  "carrier",
+  "airline",
+  "vehicle_type",
+  "transit",
+  "chargeable_rule",
+  "basis",
+  "distance",
+  "section_break_1",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "lane_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Lane Type",
+   "options": "Sea\nAir\nLand",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pol",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "POL (Port of Loading)",
+   "options": "FF Port",
+   "depends_on": "eval:doc.lane_type == 'Sea'"
+  },
+  {
+   "fieldname": "pod",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "POD (Port of Discharge)",
+   "options": "FF Port",
+   "depends_on": "eval:doc.lane_type == 'Sea'"
+  },
+  {
+   "fieldname": "aoo",
+   "fieldtype": "Link",
+   "label": "AOO (Airport of Origin)",
+   "options": "FF Airport",
+   "depends_on": "eval:doc.lane_type == 'Air'"
+  },
+  {
+   "fieldname": "aod",
+   "fieldtype": "Link",
+   "label": "AOD (Airport of Destination)",
+   "options": "FF Airport",
+   "depends_on": "eval:doc.lane_type == 'Air'"
+  },
+  {
+   "fieldname": "origin",
+   "fieldtype": "Data",
+   "label": "Origin",
+   "depends_on": "eval:doc.lane_type == 'Land'"
+  },
+  {
+   "fieldname": "destination",
+   "fieldtype": "Data",
+   "label": "Destination",
+   "depends_on": "eval:doc.lane_type == 'Land'"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "service",
+   "fieldtype": "Select",
+   "label": "Service",
+   "options": "FCL\nLCL",
+   "depends_on": "eval:doc.lane_type == 'Sea'"
+  },
+  {
+   "fieldname": "equipment",
+   "fieldtype": "Data",
+   "label": "Equipment",
+   "depends_on": "eval:doc.lane_type == 'Sea'"
+  },
+  {
+   "fieldname": "carrier",
+   "fieldtype": "Data",
+   "label": "Carrier",
+   "depends_on": "eval:doc.lane_type == 'Sea'"
+  },
+  {
+   "fieldname": "airline",
+   "fieldtype": "Data",
+   "label": "Airline",
+   "depends_on": "eval:doc.lane_type == 'Air'"
+  },
+  {
+   "fieldname": "vehicle_type",
+   "fieldtype": "Data",
+   "label": "Vehicle Type",
+   "depends_on": "eval:doc.lane_type == 'Land'"
+  },
+  {
+   "fieldname": "transit",
+   "fieldtype": "Int",
+   "label": "Transit (days)"
+  },
+  {
+   "fieldname": "chargeable_rule",
+   "fieldtype": "Select",
+   "label": "Chargeable Rule",
+   "options": "Weight\nVolume\nWeight or Volume",
+   "depends_on": "eval:doc.lane_type == 'Air'"
+  },
+  {
+   "fieldname": "basis",
+   "fieldtype": "Select",
+   "label": "Basis",
+   "options": "flat\nper_km",
+   "depends_on": "eval:doc.lane_type == 'Land'"
+  },
+  {
+   "fieldname": "distance",
+   "fieldtype": "Float",
+   "label": "Distance (km)",
+   "depends_on": "eval:doc.lane_type == 'Land' && doc.basis == 'per_km'"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_child_table": 1,
+ "links": [],
+ "modified": "2025-11-06 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Freight Forwarding",
+ "name": "FF Rate Lane",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
+

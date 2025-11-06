@@ -1,0 +1,99 @@
+[
+  {
+    "doctype": "Account",
+    "account_name": "Freight Revenue - FF",
+    "account_type": "Income Account",
+    "root_type": "Income",
+    "is_group": 0,
+    "parent_account": "Income - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Customs Service Revenue - FF",
+    "account_type": "Income Account",
+    "root_type": "Income",
+    "is_group": 0,
+    "parent_account": "Income - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Trucking Revenue - FF",
+    "account_type": "Income Account",
+    "root_type": "Income",
+    "is_group": 0,
+    "parent_account": "Income - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Port Service Revenue - FF",
+    "account_type": "Income Account",
+    "root_type": "Income",
+    "is_group": 0,
+    "parent_account": "Income - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Warehouse Service Revenue - FF",
+    "account_type": "Income Account",
+    "root_type": "Income",
+    "is_group": 0,
+    "parent_account": "Income - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Surcharges Revenue - FF",
+    "account_type": "Income Account",
+    "root_type": "Income",
+    "is_group": 0,
+    "parent_account": "Income - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Freight Cost - FF",
+    "account_type": "Expense Account",
+    "root_type": "Expense",
+    "is_group": 0,
+    "parent_account": "Expenses - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Customs Service Cost - FF",
+    "account_type": "Expense Account",
+    "root_type": "Expense",
+    "is_group": 0,
+    "parent_account": "Expenses - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Trucking Cost - FF",
+    "account_type": "Expense Account",
+    "root_type": "Expense",
+    "is_group": 0,
+    "parent_account": "Expenses - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Port Service Cost - FF",
+    "account_type": "Expense Account",
+    "root_type": "Expense",
+    "is_group": 0,
+    "parent_account": "Expenses - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Warehouse Service Cost - FF",
+    "account_type": "Expense Account",
+    "root_type": "Expense",
+    "is_group": 0,
+    "parent_account": "Expenses - FF"
+  },
+  {
+    "doctype": "Account",
+    "account_name": "Surcharges Cost - FF",
+    "account_type": "Expense Account",
+    "root_type": "Expense",
+    "is_group": 0,
+    "parent_account": "Expenses - FF"
+  }
+]
+

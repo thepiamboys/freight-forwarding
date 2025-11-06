@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-06 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "hbl_or_hawb_no",
+  "weight",
+  "cbm",
+  "chargeable",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "hbl_or_hawb_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "HBL/HAWB No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight (kg)"
+  },
+  {
+   "fieldname": "cbm",
+   "fieldtype": "Float",
+   "label": "CBM (Cubic Meter)"
+  },
+  {
+   "fieldname": "chargeable",
+   "fieldtype": "Select",
+   "label": "Chargeable",
+   "options": "Weight\nVolume\nWeight or Volume\nFlat"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_child_table": 1,
+ "links": [],
+ "modified": "2025-11-06 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Freight Forwarding",
+ "name": "Consol Member",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
+

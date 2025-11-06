@@ -1,0 +1,66 @@
+[
+  {
+    "doctype": "Item Group",
+    "name": "Freight Services",
+    "item_group_name": "Freight Services",
+    "parent_item_group": "",
+    "is_group": 1,
+    "default_expense_account": "",
+    "default_income_account": ""
+  },
+  {
+    "doctype": "Item Group",
+    "name": "Freight Services-Freight",
+    "item_group_name": "Freight",
+    "parent_item_group": "Freight Services",
+    "is_group": 0,
+    "default_expense_account": "Freight Cost - FF",
+    "default_income_account": "Freight Revenue - FF"
+  },
+  {
+    "doctype": "Item Group",
+    "name": "Freight Services-Customs",
+    "item_group_name": "Customs",
+    "parent_item_group": "Freight Services",
+    "is_group": 0,
+    "default_expense_account": "Customs Service Cost - FF",
+    "default_income_account": "Customs Service Revenue - FF"
+  },
+  {
+    "doctype": "Item Group",
+    "name": "Freight Services-Trucking",
+    "item_group_name": "Trucking",
+    "parent_item_group": "Freight Services",
+    "is_group": 0,
+    "default_expense_account": "Trucking Cost - FF",
+    "default_income_account": "Trucking Revenue - FF"
+  },
+  {
+    "doctype": "Item Group",
+    "name": "Freight Services-Port",
+    "item_group_name": "Port",
+    "parent_item_group": "Freight Services",
+    "is_group": 0,
+    "default_expense_account": "Port Service Cost - FF",
+    "default_income_account": "Port Service Revenue - FF"
+  },
+  {
+    "doctype": "Item Group",
+    "name": "Freight Services-Warehouse",
+    "item_group_name": "Warehouse",
+    "parent_item_group": "Freight Services",
+    "is_group": 0,
+    "default_expense_account": "Warehouse Service Cost - FF",
+    "default_income_account": "Warehouse Service Revenue - FF"
+  },
+  {
+    "doctype": "Item Group",
+    "name": "Freight Services-Surcharges",
+    "item_group_name": "Surcharges",
+    "parent_item_group": "Freight Services",
+    "is_group": 0,
+    "default_expense_account": "Surcharges Cost - FF",
+    "default_income_account": "Surcharges Revenue - FF"
+  }
+]
+

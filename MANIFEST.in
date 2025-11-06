@@ -1,0 +1,9 @@
+include README.md
+include manifest.json
+include pyproject.toml
+include requirements.txt
+recursive-include freight_forwarding *.json *.md *.yaml *.yml
+recursive-include freight_forwarding/doctype */*.json */*.py
+recursive-include freight_forwarding/report */*.json */*.py
+recursive-include freight_forwarding/fixtures *.json *.yaml *.yml
+

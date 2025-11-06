@@ -1,0 +1,469 @@
+[
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "division",
+    "fieldtype": "Select",
+    "label": "Division",
+    "options": "Export\nImport\nDomestic\nProject",
+    "reqd": 1,
+    "insert_after": "project_name"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "mode",
+    "fieldtype": "MultiSelect",
+    "label": "Mode",
+    "options": "Sea\nAir\nLand",
+    "insert_after": "division"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "service_scope",
+    "fieldtype": "MultiSelect",
+    "label": "Service Scope",
+    "options": "Freight\nCustoms\nTrucking\nPort\nWarehouse\nSurcharges",
+    "insert_after": "mode"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "pol",
+    "fieldtype": "Link",
+    "label": "Port of Loading (POL)",
+    "options": "FF Port",
+    "insert_after": "service_scope"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "pod",
+    "fieldtype": "Link",
+    "label": "Port of Discharge (POD)",
+    "options": "FF Port",
+    "insert_after": "pol"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "aoo",
+    "fieldtype": "Link",
+    "label": "Airport of Origin (AOO)",
+    "options": "FF Airport",
+    "insert_after": "pod"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "aod",
+    "fieldtype": "Link",
+    "label": "Airport of Destination (AOD)",
+    "options": "FF Airport",
+    "insert_after": "aoo"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "etd",
+    "fieldtype": "Date",
+    "label": "ETD (Estimated Time of Departure)",
+    "insert_after": "aod"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "eta",
+    "fieldtype": "Date",
+    "label": "ETA (Estimated Time of Arrival)",
+    "insert_after": "etd"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "incoterm",
+    "fieldtype": "Data",
+    "label": "Incoterm",
+    "insert_after": "eta"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "is_freehand",
+    "fieldtype": "Check",
+    "label": "Is Freehand",
+    "insert_after": "incoterm"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "is_nomination",
+    "fieldtype": "Check",
+    "label": "Is Nomination",
+    "insert_after": "is_freehand"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Sales Invoice",
+    "fieldname": "division",
+    "fieldtype": "Select",
+    "label": "Division",
+    "options": "Export\nImport\nDomestic\nProject",
+    "read_only": 1,
+    "insert_after": "customer"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Sales Invoice",
+    "fieldname": "consol_shipment",
+    "fieldtype": "Link",
+    "label": "Consol Shipment",
+    "options": "FF Consol Shipment",
+    "insert_after": "division"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Purchase Invoice",
+    "fieldname": "division",
+    "fieldtype": "Select",
+    "label": "Division",
+    "options": "Export\nImport\nDomestic\nProject",
+    "read_only": 1,
+    "insert_after": "supplier"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Purchase Invoice",
+    "fieldname": "consol_shipment",
+    "fieldtype": "Link",
+    "label": "Consol Shipment",
+    "options": "FF Consol Shipment",
+    "insert_after": "division"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Purchase Order",
+    "fieldname": "project",
+    "fieldtype": "Link",
+    "label": "Project",
+    "options": "Project",
+    "reqd": 1,
+    "insert_after": "supplier"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Purchase Order",
+    "fieldname": "division",
+    "fieldtype": "Select",
+    "label": "Division",
+    "options": "Export\nImport\nDomestic\nProject",
+    "read_only": 1,
+    "insert_after": "project"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Employee Advance",
+    "fieldname": "division",
+    "fieldtype": "Select",
+    "label": "Division",
+    "options": "Export\nImport\nDomestic\nProject",
+    "read_only": 1,
+    "insert_after": "employee"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Employee Advance",
+    "fieldname": "advance_lines",
+    "fieldtype": "Table",
+    "label": "Advance Lines",
+    "options": "Advance Line",
+    "insert_after": "advance_amount"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Expense Claim",
+    "fieldname": "division",
+    "fieldtype": "Select",
+    "label": "Division",
+    "options": "Export\nImport\nDomestic\nProject",
+    "read_only": 1,
+    "insert_after": "employee"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Expense Claim",
+    "fieldname": "consol_shipment",
+    "fieldtype": "Link",
+    "label": "Consol Shipment",
+    "options": "FF Consol Shipment",
+    "insert_after": "division"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Payment Entry",
+    "fieldname": "division",
+    "fieldtype": "Select",
+    "label": "Division",
+    "options": "Export\nImport\nDomestic\nProject",
+    "read_only": 1,
+    "insert_after": "party"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Sales Invoice Item",
+    "fieldname": "service_type",
+    "fieldtype": "Select",
+    "label": "Service Type",
+    "options": "Freight\nCustoms\nTrucking\nPort\nWarehouse\nSurcharges",
+    "insert_after": "item_group"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Purchase Invoice Item",
+    "fieldname": "service_type",
+    "fieldtype": "Select",
+    "label": "Service Type",
+    "options": "Freight\nCustoms\nTrucking\nPort\nWarehouse\nSurcharges",
+    "insert_after": "item_group"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Expense Claim Detail",
+    "fieldname": "project",
+    "fieldtype": "Link",
+    "label": "Project",
+    "options": "Project",
+    "reqd": 1,
+    "insert_after": "expense_date"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Expense Claim Detail",
+    "fieldname": "item",
+    "fieldtype": "Link",
+    "label": "Item",
+    "options": "Item",
+    "insert_after": "project"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Expense Claim Detail",
+    "fieldname": "service_type",
+    "fieldtype": "Select",
+    "label": "Service Type",
+    "options": "Freight\nCustoms\nTrucking\nPort\nWarehouse\nSurcharges",
+    "reqd": 1,
+    "insert_after": "item"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Expense Claim Detail",
+    "fieldname": "advance_ref",
+    "fieldtype": "Link",
+    "label": "Advance Reference",
+    "options": "Employee Advance",
+    "insert_after": "service_type"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Expense Claim Detail",
+    "fieldname": "advance_line_ref",
+    "fieldtype": "Link",
+    "label": "Advance Line Reference",
+    "options": "Advance Line",
+    "insert_after": "advance_ref"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Expense Claim Detail",
+    "fieldname": "cost_center",
+    "fieldtype": "Link",
+    "label": "Cost Center",
+    "options": "Cost Center",
+    "insert_after": "advance_line_ref"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Expense Claim Detail",
+    "fieldname": "notes_internal",
+    "fieldtype": "Small Text",
+    "label": "Internal Notes",
+    "insert_after": "cost_center"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Opportunity",
+    "fieldname": "division",
+    "fieldtype": "Select",
+    "label": "Division",
+    "options": "Export\nImport\nDomestic\nProject",
+    "insert_after": "opportunity_type"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Opportunity",
+    "fieldname": "mode",
+    "fieldtype": "MultiSelect",
+    "label": "Mode",
+    "options": "Sea\nAir\nLand",
+    "insert_after": "division"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Opportunity",
+    "fieldname": "service_scope",
+    "fieldtype": "MultiSelect",
+    "label": "Service Scope",
+    "options": "Freight\nCustoms\nTrucking\nPort\nWarehouse\nSurcharges",
+    "insert_after": "mode"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Opportunity",
+    "fieldname": "pol",
+    "fieldtype": "Link",
+    "label": "Port of Loading (POL)",
+    "options": "FF Port",
+    "insert_after": "service_scope"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Opportunity",
+    "fieldname": "pod",
+    "fieldtype": "Link",
+    "label": "Port of Discharge (POD)",
+    "options": "FF Port",
+    "insert_after": "pol"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Opportunity",
+    "fieldname": "aoo",
+    "fieldtype": "Link",
+    "label": "Airport of Origin (AOO)",
+    "options": "FF Airport",
+    "insert_after": "pod"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Opportunity",
+    "fieldname": "aod",
+    "fieldtype": "Link",
+    "label": "Airport of Destination (AOD)",
+    "options": "FF Airport",
+    "insert_after": "aoo"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Opportunity",
+    "fieldname": "etd",
+    "fieldtype": "Date",
+    "label": "ETD (Estimated Time of Departure)",
+    "insert_after": "aod"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Opportunity",
+    "fieldname": "eta",
+    "fieldtype": "Date",
+    "label": "ETA (Estimated Time of Arrival)",
+    "insert_after": "etd"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Opportunity",
+    "fieldname": "incoterm",
+    "fieldtype": "Data",
+    "label": "Incoterm",
+    "insert_after": "eta"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "division",
+    "fieldtype": "Select",
+    "label": "Division",
+    "options": "Export\nImport\nDomestic\nProject",
+    "insert_after": "quotation_to"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "mode",
+    "fieldtype": "MultiSelect",
+    "label": "Mode",
+    "options": "Sea\nAir\nLand",
+    "insert_after": "division"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "service_scope",
+    "fieldtype": "MultiSelect",
+    "label": "Service Scope",
+    "options": "Freight\nCustoms\nTrucking\nPort\nWarehouse\nSurcharges",
+    "insert_after": "mode"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "pol",
+    "fieldtype": "Link",
+    "label": "Port of Loading (POL)",
+    "options": "FF Port",
+    "insert_after": "service_scope"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "pod",
+    "fieldtype": "Link",
+    "label": "Port of Discharge (POD)",
+    "options": "FF Port",
+    "insert_after": "pol"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "aoo",
+    "fieldtype": "Link",
+    "label": "Airport of Origin (AOO)",
+    "options": "FF Airport",
+    "insert_after": "pod"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "aod",
+    "fieldtype": "Link",
+    "label": "Airport of Destination (AOD)",
+    "options": "FF Airport",
+    "insert_after": "aoo"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "etd",
+    "fieldtype": "Date",
+    "label": "ETD (Estimated Time of Departure)",
+    "insert_after": "aod"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "eta",
+    "fieldtype": "Date",
+    "label": "ETA (Estimated Time of Arrival)",
+    "insert_after": "etd"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "incoterm",
+    "fieldtype": "Data",
+    "label": "Incoterm",
+    "insert_after": "eta"
+  }
+]
+

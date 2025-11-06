@@ -1,0 +1,12 @@
+iata,icao,airport_name,city,country,lat,lon,timezone,has_customs
+CGK,WIII,Soekarno-Hatta International Airport,Jakarta,Indonesia,-6.1256,106.6558,Asia/Jakarta,1
+SUB,WARR,Juanda International Airport,Surabaya,Indonesia,-7.3798,112.7869,Asia/Jakarta,1
+KNO,WIMM,Kualanamu International Airport,Medan,Indonesia,3.6422,98.8853,Asia/Jakarta,1
+SIN,WSSS,Singapore Changi Airport,Singapore,Singapore,1.3644,103.9915,Asia/Singapore,1
+KUL,WMKK,Kuala Lumpur International Airport,Kuala Lumpur,Malaysia,2.7456,101.7099,Asia/Kuala_Lumpur,1
+BKK,VTBS,Suvarnabhumi Airport,Bangkok,Thailand,13.6811,100.7472,Asia/Bangkok,1
+PVG,ZSPD,Shanghai Pudong International Airport,Shanghai,China,31.1434,121.8052,Asia/Shanghai,1
+HKG,VHHH,Hong Kong International Airport,Hong Kong,Hong Kong,22.3080,113.9185,Asia/Hong_Kong,1
+NRT,RJAA,Narita International Airport,Tokyo,Japan,35.7720,140.3929,Asia/Tokyo,1
+ICN,RKSI,Incheon International Airport,Seoul,South Korea,37.4602,126.4407,Asia/Seoul,1
+

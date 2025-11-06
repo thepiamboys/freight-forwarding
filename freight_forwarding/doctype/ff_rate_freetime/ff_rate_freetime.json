@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-06 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "port",
+  "free_time_demurrage",
+  "free_time_detention",
+  "free_time_storage",
+  "column_break_1",
+  "demurrage_rate",
+  "detention_rate",
+  "storage_rate",
+  "currency",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "port",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Port",
+   "options": "FF Port",
+   "reqd": 1
+  },
+  {
+   "fieldname": "free_time_demurrage",
+   "fieldtype": "Int",
+   "label": "Free Time Demurrage (days)"
+  },
+  {
+   "fieldname": "free_time_detention",
+   "fieldtype": "Int",
+   "label": "Free Time Detention (days)"
+  },
+  {
+   "fieldname": "free_time_storage",
+   "fieldtype": "Int",
+   "label": "Free Time Storage (days)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "demurrage_rate",
+   "fieldtype": "Currency",
+   "label": "Demurrage Rate (per day)"
+  },
+  {
+   "fieldname": "detention_rate",
+   "fieldtype": "Currency",
+   "label": "Detention Rate (per day)"
+  },
+  {
+   "fieldname": "storage_rate",
+   "fieldtype": "Currency",
+   "label": "Storage Rate (per day)"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_child_table": 1,
+ "links": [],
+ "modified": "2025-11-06 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Freight Forwarding",
+ "name": "FF Rate Freetime",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
+

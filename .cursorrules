@@ -1,0 +1,1016 @@
+# =====================================================================
+
+# .cursorrules — PT Kurhanz Trans
+
+# Freight Forwarding on ERPNext v15 / Frappe v15 — Comprehensive & Robust
+
+# =====================================================================
+
+
+
+# -----------------------------
+
+# 0) SCOPE & NON-NEGOTIABLES
+
+# -----------------------------
+
+project:
+
+  name: "freight_forwarding (FF) add-on on ERPNext v15"
+
+  goal:
+
+    - Enterprise-grade FF yang memanfaatkan doctype ERPNext semaksimal mungkin.
+
+    - Custom di bawah 10% domain, tanpa modifikasi core ERPNext/Frappe.
+
+    - Semua transaksi finansial link ke Project, P&L per job/divisi tajam.
+
+  must_have:
+
+    - Division-first (Export, Import, Domestic, Project) + Mode (Sea, Air, Land).
+
+    - Penomoran dinamis per divisi/mode (Project; SI/PI/PO/EADV/EC).
+
+    - PPN JPT efektif 1,1% di Sales; PPh 23 di Purchase (Tax Withholding).
+
+    - Master FF Port (POL/POD), FF Airport (AOO/AOD).
+
+    - Rate Management Air/Ocean/Land dengan validity & surcharge.
+
+    - Consol Shipment (MBL/MAWB + HBL/HAWB) dan cost allocation.
+
+    - Employee Advance dengan child "Advance Line" (multi-item allocation).
+
+    - Expense Claim konsumsi per baris ke Advance Line (guard saldo).
+
+    - Project UI: Tab Finance embed lists (Adv/EC/PO/PI/SI/PE) + Dashboard override.
+
+    - PQC + User Permission berbasis division.
+
+
+
+compatibility:
+
+  frappe: "v15.x"
+
+  erpnext: "version-15"
+
+  python: "3.10.x"
+
+  node: "18 LTS"
+
+  mariadb: ">=10.6"
+
+  redis: ">=6"
+
+  bench: ">=5"
+
+  os: "Linux/containerized"
+
+
+
+# -----------------------------
+
+# 1) CODE STYLE & REPO HYGIENE
+
+# -----------------------------
+
+code_style:
+
+  general:
+
+    - snake_case untuk Python/JS.
+
+    - Komentar eksplisit, no magic numbers (gunakan konstanta).
+
+    - Struktur modular; hindari God files.
+
+  tooling:
+
+    - ruff + flake8 + isort untuk Python.
+
+    - eslint (tanpa style framework dipaksakan).
+
+    - pre-commit hooks aktif.
+
+  commits:
+
+    - format: <scope>: <verb> <short>
+
+    - contoh: "naming: add dynamic series for SI", "tax: enable 1.1% JPT rule"
+
+  branches:
+
+    - main (prod), develop (integration), feature/*, hotfix/*
+
+
+
+repo_structure:
+
+  - freight_forwarding/ (root package)
+
+    - doctype/
+
+      - advance_line/ (Custom Child)
+
+      - ff_port/ (Custom Master)
+
+      - ff_airport/ (Custom Master)
+
+      - ff_consol_shipment/ (Opsional)
+
+    - report/
+
+      - project_service_breakdown/
+
+      - expense_claim_breakdown/
+
+      - advance_utilization/
+
+      - po_commit_vs_actual/
+
+      - project_financial_snapshot/
+
+    - project/ (UI overrides + API)
+
+      - dashboard/
+
+      - api.py
+
+      - client_scripts/
+
+    - server_scripts/ (naming, validations, PQC)
+
+    - fixtures/ (custom_field, property_setter, custom_doctype, tax_rule, ec_type)
+
+  - setup.py
+
+  - manifest.json
+
+  - pyproject.toml
+
+  - requirements.txt
+
+  - MANIFEST.in
+
+  - .cursorrules
+
+  - .pre-commit-config.yaml
+
+  - README.md
+
+  - CHANGELOG.md
+
+  - INSTALL.md
+
+
+
+# -----------------------------
+
+# 2) MASTER DATA & ITEM GROUPS
+
+# -----------------------------
+
+item_groups:
+
+  root: "Freight Services"
+
+  children:
+
+    - Freight
+
+    - Customs
+
+    - Trucking
+
+    - Port
+
+    - Warehouse
+
+    - Surcharges
+
+default_accounts:
+
+  revenue:
+
+    - Freight Revenue
+
+    - Customs Service Revenue
+
+    - Trucking Revenue
+
+    - Port Service Revenue
+
+    - Warehouse Service Revenue
+
+    - Surcharges Revenue
+
+  direct_cost:
+
+    - Freight Cost
+
+    - Customs Service Cost
+
+    - Trucking Cost
+
+    - Port Service Cost
+
+    - Warehouse Service Cost
+
+    - Surcharges Cost
+
+tax:
+
+  sales:
+
+    - Sales Taxes Template "PPN JPT 1,1%": On Net Total 1.1%, Account: PPN Keluaran
+
+    - Tax Rule: apply to subtree "Freight Services"
+
+  purchase:
+
+    - Purchase Taxes Template: PPN Masukan
+
+    - Tax Withholding Category: PPh 23 (supplier applicable)
+
+expense_claim_type_defaults:
+
+  - Port Handling -> Port Service Cost
+
+  - Customs Brokerage -> Customs Service Cost
+
+  - Trucking OPEX -> Trucking Cost
+
+  - Warehouse/Storage -> Warehouse Service Cost
+
+  - Surcharges Ops -> Surcharges Cost
+
+
+
+# -----------------------------
+
+# 3) CUSTOM MASTERS (MINIMAL)
+
+# -----------------------------
+
+custom_masters:
+
+  ff_port:
+
+    key: port_code (UNIQUE, e.g., IDJKT)
+
+    fields: [port_name, country(Link Country), city, port_type(Sea/River/Rail/ICD), lat, lon, timezone, has_customs, free_time_default_demurrage, free_time_default_detention]
+
+    use: Project/Task/Rate/Consol → POL/POD
+
+  ff_airport:
+
+    key: iata (UNIQUE, e.g., CGK), icao(optional)
+
+    fields: [airport_name, city, country, lat, lon, timezone, has_customs]
+
+    use: Project/Task/Rate/Consol → AOO/AOD
+
+
+
+validation_per_mode:
+
+  - Project.mode includes Sea → pol/pod (Link FF Port) required
+
+  - Project.mode includes Air → aoo/aod (Link FF Airport) required
+
+
+
+# -----------------------------
+
+# 4) NAMING SERIES (DINAMIS)
+
+# -----------------------------
+
+division_codes: {Export: EXP, Import: IMP, Domestic: DOM, Project: PRJ}
+
+mode_codes: {Sea: SEA, Air: AIR, Land: LAN}
+
+
+
+patterns:
+
+  project: "{DIV}-{MODE}-{YYYYMMDD}-{###}"       # IMP-SEA-20251106-001
+
+  sales_invoice: "{DIV}-SINV-{YYYY}-{#####}"     # IMP-SINV-2025-00042
+
+  purchase_invoice: "{DIV}-PINV-{YYYY}-{#####}"
+
+  purchase_order: "{DIV}-PO-{YYYY}-{#####}"
+
+  employee_advance: "{DIV}-EADV-{YYYY}-{#####}"
+
+  expense_claim: "{DIV}-EC-{YYYY}-{#####}"
+
+
+
+server_scripts (before_insert):
+
+  project:
+
+    - read division + first mode
+
+    - compose prefix; make_autoname
+
+  si/pi/po/eadv/ec:
+
+    - read division from linked Project
+
+    - compose prefix; make_autoname
+
+
+
+# -----------------------------
+
+# 5) ACCESS MODEL (DIVISION-FIRST)
+
+# -----------------------------
+
+fields_division:
+
+  - Add 'division' to: Project, Sales Invoice, Purchase Invoice, Purchase Order, Employee Advance, Expense Claim, Payment Entry
+
+inheritance:
+
+  - On selecting project, copy project.division to document.division
+
+permissions:
+
+  - Master "Division" + User Permission per user
+
+  - PQC (Permission Query Conditions) on Project/SI/PI/PO/EADV/EC/PE filtering by division
+
+roles:
+
+  - FF-OPS, FF-DOCS, FF-SALES, FF-FIN, FF-MANAGER, FF-ADMIN
+
+  - Submit/cancel/amend finansial: FIN/MANAGER only
+
+
+
+# -----------------------------
+
+# 6) CRM / SALES
+
+# -----------------------------
+
+pipeline:
+
+  flow: Lead → Opportunity → Quotation → (Sales Order optional) → Sales Invoice
+
+required_fields_on_opp_quotation:
+
+  - division, mode, service_scope(Freight/Customs/Trucking/Port/Warehouse)
+
+  - lane: (POL/POD) or (AOO/AOD), ETD/ETA, incoterm
+
+  - items classified under "Freight Services" subtree
+
+rate_finder:
+
+  - Quotation button "Find Rates" → inject items with sell plan (apply Tax Rule 1.1% on SI)
+
+auto_project_on_won:
+
+  - Create Project from Opp/Quotation Won with copied lane, division/mode/service_scope, incoterm, ETD/ETA
+
+  - Naming uses dynamic series
+
+
+
+# -----------------------------
+
+# 7) RATE MANAGEMENT (AIR/OCEAN/LAND)
+
+# -----------------------------
+
+doctypes:
+
+  ff_rate_contract (header):
+
+    - vendor/carrier, mode, validity_from/to, currency, payment_term, status
+
+  ff_rate_lane (child):
+
+    - Sea: pol, pod, service(FCL/LCL), equipment, carrier, transit
+
+    - Air: aoo, aod, airline, chargeable_rule, transit
+
+    - Land: origin, destination, vehicle_type, basis(flat/per_km), distance
+
+  ff_rate_base (child): base component (per container/weight break)
+
+  ff_rate_surcharge (child): code, calc_type(flat/per_kg/per_cntr/percent), taxable(Y/N)
+
+  ff_rate_freetime (child Sea): demurrage/detention/storage defaults
+
+  ff_pricing_rule: markup/discount by division/mode/customer/commodity, priority, validity
+
+engine:
+
+  - Filter active + within validity by lane
+
+  - Total buy = base + surcharges ± fuel index/FX; apply pricing rule → sell
+
+  - Return ranked options (cost, transit, carrier)
+
+integration:
+
+  - Quotation ← best sell
+
+  - Project → PO (buy)
+
+  - Project → SI (sell + PPN 1.1%)
+
+report_planned_vs_actual:
+
+  - Compare Quotation planned vs PI + EC actual
+
+
+
+# -----------------------------
+
+# 8) PROJECT / OPERATIONS
+
+# -----------------------------
+
+project_core_fields:
+
+  - division(Select), mode(MultiSelect), service_scope(MultiSelect)
+
+  - pol/pod(Link FF Port) or aoo/aod(Link FF Airport)
+
+  - etd, eta, incoterm, is_freehand, is_nomination
+
+validations:
+
+  - Sea requires POL/POD; Air requires AOO/AOD; ETD < ETA
+
+task_leg_fields:
+
+  - leg_type(Sea/Air/Land), pol/pod or aoo/aod, etd_leg, eta_leg, vessel_or_flight
+
+ui_project:
+
+  dashboard_override:
+
+    - sections: Sales (SI/SO), Purchases (PI/PO), Expenses (EC/EADV), Cash & Bank (PE)
+
+  tab_finance (HTML embeds):
+
+    - lists: Employee Advances, Expense Claims, Purchase Orders, Purchase Invoices, Sales Invoices, Payments
+
+    - each list: Add/New (preset project), open-on-click, View All link
+
+api_list_by_project:
+
+  - whitelisted: list_by_project(doctype, project, fields, limit)
+
+
+
+# -----------------------------
+
+# 9) CONSOL SHIPMENT (OPTIONAL, RECOMMENDED)
+
+# -----------------------------
+
+ff_consol_shipment:
+
+  header:
+
+    - division, mode, mbl_or_mawb_no, carrier_or_airline, vessel_or_flight, pol/pod or aoo/aod, etd, eta
+
+  children:
+
+    - consol_member: project, hbl/hawb_no, weight, cbm, chargeable
+
+    - allocation_rule: charge_code/item, method(by_cbm/by_weight/by_chargeable/equal/by_slot/manual_pct)
+
+process:
+
+  - Create one PI/EC at consol; split to PI/EC per project by allocation
+
+  - Create SI per project member based on sell plan
+
+principle:
+
+  - Keep financial documents 1:1 with Project for clean P&L and division access
+
+
+
+# -----------------------------
+
+# 10) EMPLOYEE ADVANCE & EXPENSE CLAIM
+
+# -----------------------------
+
+advance_line (Custom Child of Employee Advance):
+
+  fields:
+
+    - project(Link Project) [reqd]
+
+    - item(Link Item) [reqd]
+
+    - item_group (RO, autofill)
+
+    - service_type(Select: Freight/Customs/Trucking/Port/Warehouse) [reqd]
+
+    - allocated_amount(Currency) [reqd]
+
+    - consumed_amount(Currency, RO, default 0)
+
+    - balance_amount(Currency, RO)
+
+    - notes(Small Text)
+
+    - line_status(Select: Open/Closed, RO)
+
+  header_validation:
+
+    - sum(allocated_amount) == advance_amount
+
+    - all child.project == header.project
+
+    - balance = allocated - consumed; close when 0
+
+expense_claim (bawaan, with extra fields on row):
+
+  - project(Link Project) [reqd on each row]
+
+  - item(Link Item)
+
+  - service_type(Select...) [reqd]
+
+  - advance_ref(Link Employee Advance)
+
+  - advance_line_ref(Link Advance Line)
+
+  - cost_center(Link Cost Center)
+
+  - notes_internal
+
+consumption_rules:
+
+  - If advance_line_ref set → validate project & saldo, consume
+
+  - Else if advance_ref set → auto-pick matching line (by item/service_type) with sufficient balance → set advance_line_ref → consume
+
+  - Block submit if amount > balance
+
+
+
+# -----------------------------
+
+# 11) FINANCIAL DOCS (PO/PI/SI/PE)
+
+# -----------------------------
+
+purchase_order:
+
+  - project required, services classified (Item Group; optional row.service_type)
+
+purchase_invoice:
+
+  - project required; classification valid; PPN Masukan; PPh 23 via TWC if applicable
+
+sales_invoice:
+
+  - project required; items under "Freight Services" trigger Sales Tax Rule 1.1% (JPT)
+
+payment_entry:
+
+  - standard; ensure filters by project available in reporting
+
+
+
+# -----------------------------
+
+# 12) NAMING, VALIDATIONS & AUTOMATIONS
+
+# -----------------------------
+
+naming_before_insert:
+
+  - Project: {DIV}-{MODE}-{YYYYMMDD}-{###}
+
+  - SI/PI/PO/EADV/EC: {DIV}-TAG-{YYYY}-{#####} (DIV read from Project)
+
+form_autofill:
+
+  - On selecting project, set document.division
+
+  - On item_code change (SI/PI/EC rows), set service_type from Item Group map
+
+submit_guards:
+
+  sales_invoice:
+
+    - require project; ensure classification; ensure 1.1% tax rule applied; set division
+
+  purchase_invoice:
+
+    - require project; ensure classification; ensure TWC if supplier applicable; set division
+
+  purchase_order:
+
+    - require project; ensure service classification
+
+  expense_claim:
+
+    - each row must have project & service_type; apply consumption rules; set cost_center (by division mapping) if empty; set division (header) from Project
+
+pqc:
+
+  - Ensure PQC active on Project/SI/PI/PO/EADV/EC/PE to filter by division
+
+
+
+# -----------------------------
+
+# 13) REPORTS (SCRIPT REPORTS)
+
+# -----------------------------
+
+reports:
+
+  project_service_breakdown:
+
+    - revenue: Sales Invoice Item.base_net_amount (si.project=filter, docstatus=1)
+
+    - cost: Purchase Invoice Item.base_net_amount + Expense Claim Detail.base_amount (project=filter, docstatus=1)
+
+    - group_by: service category (Item Group primary; row.service_type fallback)
+
+    - output: revenue, cost, margin, margin%
+
+  expense_claim_breakdown:
+
+    - sum by project × service_type × item
+
+  advance_utilization:
+
+    - allocated/consumed/balance by project × advance × line
+
+  po_commit_vs_actual:
+
+    - PO total vs (PI + EC) actual
+
+  project_financial_snapshot:
+
+    - counts(#SO,#SI,#PO,#PI,#EC,#PE), totals, AR/AP outstanding
+
+  consol_profitability (if enabled):
+
+    - planned vs actual per consol & per member
+
+
+
+# -----------------------------
+
+# 14) FIXTURES & MIGRATIONS
+
+# -----------------------------
+
+fixtures:
+
+  - custom_fields (Project, Task, SI/PI items fallback field service_type, EC detail additions, PO header project/division)
+
+  - property_setter (make fields reqd/hidden/label)
+
+  - custom_doctype (advance_line, ff_port, ff_airport, ff_consol_shipment*)
+
+  - tax_rule (Sales 1.1% JPT)
+
+  - expense_claim_type (default accounts)
+
+migration_order:
+
+  1) Item Group tree → Default accounts
+
+  2) Tax templates & Tax Rule 1.1%
+
+  3) Custom Doctypes (FF Port/Airport, Advance Line, Consol*)
+
+  4) Custom Fields & Property Setters
+
+  5) Server Scripts (naming/validations/PQC)
+
+  6) Import FF Port/Airport CSV (bootstrap)
+
+  7) Reports
+
+  8) UI (dashboard override, Tab Finance)
+
+  9) Rate Management doctypes & engine
+
+  10) Data backfill (set division; link project where missing)
+
+
+
+# -----------------------------
+
+# 15) QA, TESTS, CI/CD
+
+# -----------------------------
+
+lint:
+
+  - ruff, flake8, isort, eslint
+
+unit_tests (minimum):
+
+  - naming series (Project & SI/PI/PO/EADV/EC)
+
+  - tax 1.1% auto-applied on SI for Freight Services items
+
+  - expense claim consumption (advance_line_ref & auto-pick)
+
+  - sum(Advance Line.allocated) == Employee Advance.advance_amount
+
+  - PQC filters list results by user division
+
+integration_tests (E2E):
+
+  - Lead→Quotation (Rate Finder)→Project→Task→PO→PI→EADV→EC→SI→PE→Reports
+
+coverage:
+
+  min: 60
+
+  target: 80
+
+ci:
+
+  - run tests on PR; block merge on red
+
+artifacts:
+
+  - screenshots: Project Tab Finance; SI with 1.1%; EC consumption; Reports OK
+
+
+
+# -----------------------------
+
+# 16) RELEASE MANAGEMENT & GATES
+
+# -----------------------------
+
+deployment:
+
+  - bench backup
+
+  - bench migrate
+
+  - bench build
+
+  - bench restart
+
+  - health checks: queues/scheduler/error_log
+
+  - bench --site <site> export-fixtures
+
+rollback:
+
+  - restore latest sql.gz + files
+
+gates (must pass):
+
+  - [ ] No core modification
+
+  - [ ] Dynamic naming active (Project & transactions)
+
+  - [ ] Division access (User Permission + PQC) enforced
+
+  - [ ] Project validations (mode→port/airport; ETD<ETA)
+
+  - [ ] Item Group tree + default accounts ready
+
+  - [ ] Sales Tax Rule 1.1% active; Purchase PPh23 via TWC
+
+  - [ ] Advance Line working; sum(allocated)=advance_amount
+
+  - [ ] EC rows have project+service_type; consumption validated
+
+  - [ ] PO/PI/SI valid; Reports OK
+
+  - [ ] Project UI (dashboard override + Tab Finance embeds)
+
+  - [ ] Tests green; coverage ≥ 60%; fixtures exported
+
+
+
+# -----------------------------
+
+# 17) QUICK SNIPPETS (FOR CURSOR)
+
+# -----------------------------
+
+python_server_script_project_naming:
+
+  """
+
+  import frappe
+
+  from frappe.model.naming import make_autoname
+
+  DIV = {"Export":"EXP","Import":"IMP","Domestic":"DOM","Project":"PRJ"}
+
+  MODE = {"Sea":"SEA","Air":"AIR","Land":"LAN"}
+
+
+
+  def execute(doc, method):
+
+      if doc.get("__islocal") != 1: return
+
+      if not doc.division or not doc.mode:
+
+          frappe.throw("Division & Mode wajib diisi.")
+
+      first_mode = (doc.mode or "").split(",")[0].strip()
+
+      div_code, mode_code = DIV.get(doc.division), MODE.get(first_mode)
+
+      if not div_code or not mode_code:
+
+          frappe.throw("Division/Mode tidak valid.")
+
+      today = frappe.utils.now_datetime().strftime("%Y%m%d")
+
+      doc.name = make_autoname(f"{div_code}-{mode_code}-{today}-###")
+
+  """
+
+
+
+python_server_script_si_naming_and_validation:
+
+  """
+
+  import frappe
+
+  from frappe.model.naming import make_autoname
+
+
+
+  def before_insert(doc, method=None):
+
+      if doc.get("__islocal") != 1: return
+
+      if not doc.project:
+
+          frappe.throw("Sales Invoice wajib di-link ke Project.")
+
+      div = frappe.db.get_value("Project", doc.project, "division")
+
+      year = frappe.utils.now_datetime().strftime("%Y")
+
+      doc.name = make_autoname(f"{div}-SINV-{year}-#####")
+
+
+
+  def before_submit(doc, method=None):
+
+      if not doc.project:
+
+          frappe.throw("Project wajib.")
+
+      for it in doc.items:
+
+          if not (it.item_group or it.get('service_type')):
+
+              frappe.throw(f"Item {it.item_name} belum terklasifikasi.")
+
+      doc.division = frappe.db.get_value("Project", doc.project, "division")
+
+  """
+
+
+
+js_client_autofill_division_from_project:
+
+  """
+
+  frappe.ui.form.on(cur_frm.doctype, {
+
+    project: function(frm) {
+
+      if (!frm.doc.project) return;
+
+      frappe.db.get_value('Project', frm.doc.project, 'division').then(r => {
+
+        const d = r.message && r.message.division;
+
+        if (d) frm.set_value('division', d);
+
+      });
+
+    }
+
+  });
+
+  """
+
+
+
+js_client_set_service_type_from_item_group:
+
+  """
+
+  function infer_service_type(item_group) {
+
+    const map = {
+
+      'Freight': 'Freight', 'Customs': 'Customs', 'Trucking': 'Trucking',
+
+      'Port': 'Port', 'Warehouse': 'Warehouse', 'Surcharges': 'Surcharges'
+
+    };
+
+    return map[item_group] || null;
+
+  }
+
+  frappe.ui.form.on('Sales Invoice Item', {
+
+    item_code: function(frm, cdt, cdn) {
+
+      const row = locals[cdt][cdn];
+
+      if (!row.item_code) return;
+
+      frappe.db.get_value('Item', row.item_code, 'item_group').then(r => {
+
+        const ig = r.message && r.message.item_group;
+
+        const st = infer_service_type(ig);
+
+        if (st && !row.service_type) frappe.model.set_value(cdt, cdn, 'service_type', st);
+
+      });
+
+    }
+
+  });
+
+  """
+
+
+
+# -----------------------------
+
+# 18) WORKFLOWS & UX NOTES
+
+# -----------------------------
+
+workflows:
+
+  quotation_won_to_project: auto-create project with lane copy & dynamic naming
+
+  ec_approval: employee submit → finance approve → post
+
+  rate_approval: draft → reviewed → approved → active (maker-checker)
+
+
+
+ux:
+
+  - Keep forms clean; required fields first.
+
+  - Provide quick links from Project to key docs via Tab Finance.
+
+  - Provide "Find Rates" on Quotation side panel.
+
+
+
+# -----------------------------
+
+# 19) RISK & FALLBACKS
+
+# -----------------------------
+
+risks:
+
+  - Data lama tanpa project/division → butuh backfill script.
+
+  - Salah klasifikasi item group → salah pajak & report.
+
+  - PQC salah → data lintas divisi terbuka/tertutup keliru.
+
+fallbacks:
+
+  - Guard rails pada submit hooks (hard fail).
+
+  - Admin override hanya via FF-ADMIN/FF-MANAGER.
+
+
+
+# EOF
+

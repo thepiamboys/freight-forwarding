@@ -1,0 +1,45 @@
+[
+  {
+    "doctype": "Role",
+    "name": "FF-OPS",
+    "role_name": "FF-OPS",
+    "desk_access": 1,
+    "is_custom": 1
+  },
+  {
+    "doctype": "Role",
+    "name": "FF-DOCS",
+    "role_name": "FF-DOCS",
+    "desk_access": 1,
+    "is_custom": 1
+  },
+  {
+    "doctype": "Role",
+    "name": "FF-SALES",
+    "role_name": "FF-SALES",
+    "desk_access": 1,
+    "is_custom": 1
+  },
+  {
+    "doctype": "Role",
+    "name": "FF-FIN",
+    "role_name": "FF-FIN",
+    "desk_access": 1,
+    "is_custom": 1
+  },
+  {
+    "doctype": "Role",
+    "name": "FF-MANAGER",
+    "role_name": "FF-MANAGER",
+    "desk_access": 1,
+    "is_custom": 1
+  },
+  {
+    "doctype": "Role",
+    "name": "FF-ADMIN",
+    "role_name": "FF-ADMIN",
+    "desk_access": 1,
+    "is_custom": 1
+  }
+]
+

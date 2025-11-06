@@ -1,0 +1,149 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-06 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "port_code",
+  "port_name",
+  "country",
+  "city",
+  "port_type",
+  "section_break_1",
+  "lat",
+  "lon",
+  "timezone",
+  "column_break_1",
+  "has_customs",
+  "free_time_default_demurrage",
+  "free_time_default_detention"
+ ],
+ "fields": [
+  {
+   "fieldname": "port_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Port Code",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "port_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Port Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "port_type",
+   "fieldtype": "Select",
+   "label": "Port Type",
+   "options": "Sea\nRiver\nRail\nICD",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Location Details"
+  },
+  {
+   "fieldname": "lat",
+   "fieldtype": "Float",
+   "label": "Latitude"
+  },
+  {
+   "fieldname": "lon",
+   "fieldtype": "Float",
+   "label": "Longitude"
+  },
+  {
+   "fieldname": "timezone",
+   "fieldtype": "Data",
+   "label": "Timezone"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "has_customs",
+   "fieldtype": "Check",
+   "label": "Has Customs"
+  },
+  {
+   "fieldname": "free_time_default_demurrage",
+   "fieldtype": "Int",
+   "label": "Free Time Default Demurrage (Days)"
+  },
+  {
+   "fieldname": "free_time_default_detention",
+   "fieldtype": "Int",
+   "label": "Free Time Default Detention (Days)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-06 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Freight Forwarding",
+ "name": "FF Port",
+ "naming_rule": "By \"port_code\"",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-OPS",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-ADMIN",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

@@ -1,0 +1,172 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-06 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "rule_name",
+  "division",
+  "mode",
+  "customer",
+  "commodity",
+  "column_break_1",
+  "priority",
+  "validity_from",
+  "validity_to",
+  "section_break_1",
+  "markup_type",
+  "markup_value",
+  "discount_type",
+  "discount_value",
+  "section_break_2",
+  "status",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "rule_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Rule Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "division",
+   "fieldtype": "Select",
+   "label": "Division",
+   "options": "Export\nImport\nDomestic\nProject"
+  },
+  {
+   "fieldname": "mode",
+   "fieldtype": "MultiSelect",
+   "label": "Mode",
+   "options": "Sea\nAir\nLand"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "commodity",
+   "fieldtype": "Data",
+   "label": "Commodity"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Int",
+   "label": "Priority",
+   "default": 10,
+   "description": "Lower number = higher priority"
+  },
+  {
+   "fieldname": "validity_from",
+   "fieldtype": "Date",
+   "label": "Validity From"
+  },
+  {
+   "fieldname": "validity_to",
+   "fieldtype": "Date",
+   "label": "Validity To"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Markup/Discount"
+  },
+  {
+   "fieldname": "markup_type",
+   "fieldtype": "Select",
+   "label": "Markup Type",
+   "options": "Percentage\nFixed Amount"
+  },
+  {
+   "fieldname": "markup_value",
+   "fieldtype": "Currency",
+   "label": "Markup Value"
+  },
+  {
+   "fieldname": "discount_type",
+   "fieldtype": "Select",
+   "label": "Discount Type",
+   "options": "Percentage\nFixed Amount"
+  },
+  {
+   "fieldname": "discount_value",
+   "fieldtype": "Currency",
+   "label": "Discount Value"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nInactive",
+   "default": "Active"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-06 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Freight Forwarding",
+ "name": "FF Pricing Rule",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-SALES",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-MANAGER",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-ADMIN",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
+

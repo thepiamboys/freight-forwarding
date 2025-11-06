@@ -1,0 +1,384 @@
+[
+  {
+    "doctype": "DocType",
+    "name": "FF Port",
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2025-11-06 12:00:00.000000",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+      "port_code",
+      "port_name",
+      "country",
+      "city",
+      "port_type",
+      "section_break_1",
+      "lat",
+      "lon",
+      "timezone",
+      "column_break_1",
+      "has_customs",
+      "free_time_default_demurrage",
+      "free_time_default_detention"
+    ],
+    "fields": [
+      {
+        "fieldname": "port_code",
+        "fieldtype": "Data",
+        "in_list_view": 1,
+        "label": "Port Code",
+        "reqd": 1,
+        "unique": 1
+      },
+      {
+        "fieldname": "port_name",
+        "fieldtype": "Data",
+        "in_list_view": 1,
+        "label": "Port Name",
+        "reqd": 1
+      },
+      {
+        "fieldname": "country",
+        "fieldtype": "Link",
+        "label": "Country",
+        "options": "Country",
+        "reqd": 1
+      },
+      {
+        "fieldname": "city",
+        "fieldtype": "Data",
+        "label": "City"
+      },
+      {
+        "fieldname": "port_type",
+        "fieldtype": "Select",
+        "label": "Port Type",
+        "options": "Sea\nRiver\nRail\nICD",
+        "reqd": 1
+      },
+      {
+        "fieldname": "section_break_1",
+        "fieldtype": "Section Break",
+        "label": "Location Details"
+      },
+      {
+        "fieldname": "lat",
+        "fieldtype": "Float",
+        "label": "Latitude"
+      },
+      {
+        "fieldname": "lon",
+        "fieldtype": "Float",
+        "label": "Longitude"
+      },
+      {
+        "fieldname": "timezone",
+        "fieldtype": "Data",
+        "label": "Timezone"
+      },
+      {
+        "fieldname": "column_break_1",
+        "fieldtype": "Column Break"
+      },
+      {
+        "fieldname": "has_customs",
+        "fieldtype": "Check",
+        "label": "Has Customs"
+      },
+      {
+        "fieldname": "free_time_default_demurrage",
+        "fieldtype": "Int",
+        "label": "Free Time Default Demurrage (Days)"
+      },
+      {
+        "fieldname": "free_time_default_detention",
+        "fieldtype": "Int",
+        "label": "Free Time Default Detention (Days)"
+      }
+    ],
+    "index_web_pages_for_search": 1,
+    "links": [],
+    "modified": "2025-11-06 12:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Freight Forwarding",
+    "naming_rule": "By \"port_code\"",
+    "owner": "Administrator",
+    "permissions": [
+      {
+        "create": 1,
+        "delete": 1,
+        "email": 1,
+        "export": 1,
+        "print": 1,
+        "read": 1,
+        "report": 1,
+        "role": "System Manager",
+        "share": 1,
+        "write": 1
+      },
+      {
+        "create": 1,
+        "delete": 1,
+        "email": 1,
+        "export": 1,
+        "print": 1,
+        "read": 1,
+        "report": 1,
+        "role": "FF-OPS",
+        "share": 1,
+        "write": 1
+      },
+      {
+        "create": 1,
+        "delete": 1,
+        "email": 1,
+        "export": 1,
+        "print": 1,
+        "read": 1,
+        "report": 1,
+        "role": "FF-ADMIN",
+        "share": 1,
+        "write": 1
+      }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+  },
+  {
+    "doctype": "DocType",
+    "name": "FF Airport",
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2025-11-06 12:00:00.000000",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+      "iata",
+      "icao",
+      "airport_name",
+      "city",
+      "country",
+      "section_break_1",
+      "lat",
+      "lon",
+      "timezone",
+      "column_break_1",
+      "has_customs"
+    ],
+    "fields": [
+      {
+        "fieldname": "iata",
+        "fieldtype": "Data",
+        "in_list_view": 1,
+        "label": "IATA Code",
+        "reqd": 1,
+        "unique": 1
+      },
+      {
+        "fieldname": "icao",
+        "fieldtype": "Data",
+        "label": "ICAO Code"
+      },
+      {
+        "fieldname": "airport_name",
+        "fieldtype": "Data",
+        "in_list_view": 1,
+        "label": "Airport Name",
+        "reqd": 1
+      },
+      {
+        "fieldname": "city",
+        "fieldtype": "Data",
+        "label": "City"
+      },
+      {
+        "fieldname": "country",
+        "fieldtype": "Link",
+        "label": "Country",
+        "options": "Country",
+        "reqd": 1
+      },
+      {
+        "fieldname": "section_break_1",
+        "fieldtype": "Section Break",
+        "label": "Location Details"
+      },
+      {
+        "fieldname": "lat",
+        "fieldtype": "Float",
+        "label": "Latitude"
+      },
+      {
+        "fieldname": "lon",
+        "fieldtype": "Float",
+        "label": "Longitude"
+      },
+      {
+        "fieldname": "timezone",
+        "fieldtype": "Data",
+        "label": "Timezone"
+      },
+      {
+        "fieldname": "column_break_1",
+        "fieldtype": "Column Break"
+      },
+      {
+        "fieldname": "has_customs",
+        "fieldtype": "Check",
+        "label": "Has Customs"
+      }
+    ],
+    "index_web_pages_for_search": 1,
+    "links": [],
+    "modified": "2025-11-06 12:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Freight Forwarding",
+    "naming_rule": "By \"iata\"",
+    "owner": "Administrator",
+    "permissions": [
+      {
+        "create": 1,
+        "delete": 1,
+        "email": 1,
+        "export": 1,
+        "print": 1,
+        "read": 1,
+        "report": 1,
+        "role": "System Manager",
+        "share": 1,
+        "write": 1
+      },
+      {
+        "create": 1,
+        "delete": 1,
+        "email": 1,
+        "export": 1,
+        "print": 1,
+        "read": 1,
+        "report": 1,
+        "role": "FF-OPS",
+        "share": 1,
+        "write": 1
+      },
+      {
+        "create": 1,
+        "delete": 1,
+        "email": 1,
+        "export": 1,
+        "print": 1,
+        "read": 1,
+        "report": 1,
+        "role": "FF-ADMIN",
+        "share": 1,
+        "write": 1
+      }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+  },
+  {
+    "doctype": "DocType",
+    "name": "Advance Line",
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2025-11-06 12:00:00.000000",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+      "project",
+      "item",
+      "item_group",
+      "service_type",
+      "allocated_amount",
+      "consumed_amount",
+      "balance_amount",
+      "notes",
+      "line_status"
+    ],
+    "fields": [
+      {
+        "fieldname": "project",
+        "fieldtype": "Link",
+        "in_list_view": 1,
+        "label": "Project",
+        "options": "Project",
+        "reqd": 1
+      },
+      {
+        "fieldname": "item",
+        "fieldtype": "Link",
+        "in_list_view": 1,
+        "label": "Item",
+        "options": "Item",
+        "reqd": 1
+      },
+      {
+        "fieldname": "item_group",
+        "fieldtype": "Link",
+        "label": "Item Group",
+        "options": "Item Group",
+        "read_only": 1
+      },
+      {
+        "fieldname": "service_type",
+        "fieldtype": "Select",
+        "in_list_view": 1,
+        "label": "Service Type",
+        "options": "Freight\nCustoms\nTrucking\nPort\nWarehouse\nSurcharges",
+        "reqd": 1
+      },
+      {
+        "fieldname": "allocated_amount",
+        "fieldtype": "Currency",
+        "in_list_view": 1,
+        "label": "Allocated Amount",
+        "reqd": 1
+      },
+      {
+        "fieldname": "consumed_amount",
+        "fieldtype": "Currency",
+        "label": "Consumed Amount",
+        "read_only": 1,
+        "default": 0
+      },
+      {
+        "fieldname": "balance_amount",
+        "fieldtype": "Currency",
+        "in_list_view": 1,
+        "label": "Balance Amount",
+        "read_only": 1
+      },
+      {
+        "fieldname": "notes",
+        "fieldtype": "Small Text",
+        "label": "Notes"
+      },
+      {
+        "fieldname": "line_status",
+        "fieldtype": "Select",
+        "label": "Line Status",
+        "options": "Open\nClosed",
+        "read_only": 1,
+        "default": "Open"
+      }
+    ],
+    "index_web_pages_for_search": 1,
+    "is_child_table": 1,
+    "links": [],
+    "modified": "2025-11-06 12:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Freight Forwarding",
+    "owner": "Administrator",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+  }
+]
+

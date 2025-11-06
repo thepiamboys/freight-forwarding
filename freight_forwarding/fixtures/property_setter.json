@@ -1,0 +1,129 @@
+[
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Project",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "division"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Sales Invoice",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "project"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Sales Invoice",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "division"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Purchase Invoice",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "project"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Purchase Invoice",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "division"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Purchase Order",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "project"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Purchase Order",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "division"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Employee Advance",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "project"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Employee Advance",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "division"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Expense Claim",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "division"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Payment Entry",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "project"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Payment Entry",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "division"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Expense Claim Detail",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "project"
+  },
+  {
+    "doctype": "Property Setter",
+    "doctype_or_field": "DocType",
+    "doc_type": "Expense Claim Detail",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1",
+    "field_name": "service_type"
+  }
+]
+

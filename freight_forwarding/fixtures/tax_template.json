@@ -1,0 +1,37 @@
+[
+  {
+    "doctype": "Sales Taxes and Charges Template",
+    "name": "PPN JPT 1,1%",
+    "title": "PPN JPT 1,1%",
+    "company": "",
+    "is_default": 0,
+    "taxes": [
+      {
+        "charge_type": "On Net Total",
+        "rate": 1.1,
+        "account_head": "PPN Keluaran - FF",
+        "description": "PPN JPT 1,1%",
+        "included_in_print_rate": 0,
+        "cost_center": ""
+      }
+    ]
+  },
+  {
+    "doctype": "Purchase Taxes and Charges Template",
+    "name": "PPN Masukan",
+    "title": "PPN Masukan",
+    "company": "",
+    "is_default": 0,
+    "taxes": [
+      {
+        "charge_type": "On Net Total",
+        "rate": 11,
+        "account_head": "PPN Masukan - FF",
+        "description": "PPN Masukan 11%",
+        "included_in_print_rate": 0,
+        "cost_center": ""
+      }
+    ]
+  }
+]
+

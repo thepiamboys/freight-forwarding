@@ -1,0 +1,210 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-06 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "vendor",
+  "carrier",
+  "mode",
+  "validity_from",
+  "validity_to",
+  "column_break_1",
+  "currency",
+  "payment_term",
+  "status",
+  "section_break_1",
+  "rate_lanes",
+  "section_break_2",
+  "rate_bases",
+  "section_break_3",
+  "rate_surcharges",
+  "section_break_4",
+  "rate_freetimes",
+  "section_break_5",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "vendor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Vendor",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "carrier",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Carrier",
+   "insert_after": "vendor"
+  },
+  {
+   "fieldname": "mode",
+   "fieldtype": "MultiSelect",
+   "in_list_view": 1,
+   "label": "Mode",
+   "options": "Sea\nAir\nLand",
+   "reqd": 1
+  },
+  {
+   "fieldname": "validity_from",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Validity From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "validity_to",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Validity To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1,
+   "default": "USD"
+  },
+  {
+   "fieldname": "payment_term",
+   "fieldtype": "Link",
+   "label": "Payment Term",
+   "options": "Payment Terms Template"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nActive\nExpired\nCancelled",
+   "default": "Draft"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Rate Lanes"
+  },
+  {
+   "fieldname": "rate_lanes",
+   "fieldtype": "Table",
+   "label": "Rate Lanes",
+   "options": "FF Rate Lane",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Rate Bases"
+  },
+  {
+   "fieldname": "rate_bases",
+   "fieldtype": "Table",
+   "label": "Rate Bases",
+   "options": "FF Rate Base"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break",
+   "label": "Rate Surcharges"
+  },
+  {
+   "fieldname": "rate_surcharges",
+   "fieldtype": "Table",
+   "label": "Rate Surcharges",
+   "options": "FF Rate Surcharge"
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break",
+   "label": "Rate Freetimes (Sea Only)"
+  },
+  {
+   "fieldname": "rate_freetimes",
+   "fieldtype": "Table",
+   "label": "Rate Freetimes",
+   "options": "FF Rate Freetime"
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-06 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Freight Forwarding",
+ "name": "FF Rate Contract",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-OPS",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-SALES",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-MANAGER",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FF-ADMIN",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
+
